@@ -10,7 +10,7 @@ public partial class Main : Node
 	// A packed scene is effectively the data needed to create a scene
 	private PackedScene buildingScene;
 	private Button placeBuildingButton;
-	private Vector2? hoveredGridCell;
+	private Vector2I? hoveredGridCell;
 	/*
 		HashSet - A type of datastructure in which each element is unique
 			- Un-ordered
@@ -54,11 +54,9 @@ public partial class Main : Node
 		if (cursor.Visible && (!hoveredGridCell.HasValue || hoveredGridCell.Value != gridPosition))
 		{
 			hoveredGridCell = gridPosition;
-			gridManager.HighlightValidTilesInRadius(hoveredGridCell.Value, 3);
+			gridManager.HighlightBuildableTiles();
 		}
 	}
-
-	
 
 	private void PlaceBuildingAtHoveredCellPosition()
 	{
